@@ -1,0 +1,23 @@
+DEFINE MODULE = MPCCOM
+DEFINE LU     = CEquipmentRentalRate
+DEFINE TABLE  = C_EQUIPMENT_RENTAL_RATE_TAB
+
+DECLARE
+   table_name_ VARCHAR2(30);
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   table_name_ := Database_SYS.Get_Or_Generate_Rtb_Name('&TABLE');
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'CONTRACT',         'VARCHAR2(5)',  'N');
+   Database_SYS.Set_Table_Column(columns_, 'VENDOR_NO',        'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'EQUIPMENT_TYPE',   'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'VALID_FROM',       'DATE',         'N');
+   Database_SYS.Set_Table_Column(columns_, 'VALID_TO',         'DATE',         'Y');
+   Database_SYS.Set_Table_Column(columns_, 'RENTAL_RATE',      'NUMBER',       'N');
+   Database_SYS.Set_Table_Column(columns_, 'RENTAL_RATE_UOM',  'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'RATE_STATUS',      'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION',       'DATE',         'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY',           'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
