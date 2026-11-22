@@ -1,0 +1,19 @@
+enumerationname CRentalRateUom;
+component MPCCOM;
+layer Cust;
+description "Unit the rental rate is charged in";
+
+values {
+   value Hour {
+      DbValue "HOUR";
+      ClientValue "Hour";
+   }
+   value Day {
+      DbValue "DAY";
+      ClientValue "Day";
+   }
+   value Week {
+      DbValue "WEEK";
+      ClientValue "Week";
+   }
+}

@@ -1,0 +1,15 @@
+enumerationname CRentalRateStatus;
+component MPCCOM;
+layer Cust;
+description "Status of an equipment rental rate";
+
+values {
+   value Active {
+      DbValue "ACTIVE";
+      ClientValue "Active";
+   }
+   value Inactive {
+      DbValue "INACTIVE";
+      ClientValue "Inactive";
+   }
+}

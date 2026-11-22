@@ -1,0 +1,37 @@
+entityname CEquipmentRentalRate;
+component MPCCOM;
+layer Cust;
+description "Rental rate agreed with a supplier for an equipment type at a site";
+
+attributes {
+   key      Contract       TEXT(5)                          KMI-L {
+      LabelText "Site";
+   }
+   key      VendorNo       TEXT(20)                         KMI-L {
+      LabelText "Supplier";
+   }
+   key      EquipmentType  TEXT(20)                         KMI-L {
+      LabelText "Equipment Type";
+      Format = uppercase;
+   }
+   key      ValidFrom      DATE                             KMI-- {
+      LabelText "Valid From";
+   }
+   public   ValidTo        DATE                             A-IU- {
+      LabelText "Valid To";
+   }
+   public   RentalRate     NUMBER                           AMIU- {
+      LabelText "Rental Rate";
+   }
+   public   RentalRateUom  ENUMERATION(CRentalRateUom)      AMIU- {
+      LabelText "Rate Unit";
+   }
+   public   RateStatus     ENUMERATION(CRentalRateStatus)   AMIU- {
+      LabelText "Status";
+   }
+}
+
+references {
+   reference SiteRef(Contract) to Site(Contract);
+   reference SupplierRef(VendorNo) to Supplier(VendorNo);
+}

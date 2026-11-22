@@ -1,0 +1,41 @@
+client CEquipmentRentalRate;
+component MPCCOM;
+layer Cust;
+projection CEquipmentRentalRateHandling;
+
+navigator {
+   entry CEquipmentRentalRateNavEntry parent ProcurementNavigator.SupplierNavEntry at index 900 {
+      label = "Equipment Rental Rates";
+      page List;
+   }
+}
+
+page List using CEquipmentRentalRateSet {
+   label = "Equipment Rental Rates";
+   list CEquipmentRentalRateList;
+}
+
+list CEquipmentRentalRateList for CEquipmentRentalRate {
+   lov SiteRef with ReferenceSiteSelector {
+      description = SiteRef.Description;
+   }
+   lov SupplierRef with ReferenceSupplierSelector {
+      description = SupplierRef.VendorName;
+   }
+   field EquipmentType;
+   field ValidFrom;
+   field ValidTo;
+   field RentalRate;
+   field RentalRateUom;
+   field RateStatus;
+}
+
+selector ReferenceSiteSelector for Site {
+   static Contract;
+   static Description;
+}
+
+selector ReferenceSupplierSelector for Supplier {
+   static VendorNo;
+   static VendorName;
+}

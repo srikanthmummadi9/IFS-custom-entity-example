@@ -1,0 +1,14 @@
+projection CEquipmentRentalRateHandling;
+component MPCCOM;
+layer Cust;
+description "Maintain equipment rental rates";
+category Users;
+
+entityset CEquipmentRentalRateSet for CEquipmentRentalRate;
+
+@Override
+entity CEquipmentRentalRate {
+   crud = Create, Read, Update, Delete;
+   reference SiteRef(Contract) to Site(Contract);
+   reference SupplierRef(VendorNo) to Supplier(VendorNo);
+}
